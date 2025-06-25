@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <script>
+    if (!localStorage.getItem("loggedInUser")) {
+      window.location.href = "login.html";
+    }
+  </script>
+  <div class="container">
+    <h2>Expense Tracker</h2>
+    <button onclick="toggleDark()" class="btn toggle-btn">🌙 Toggle Dark Mode</button>
+    <button onclick="logout()" class="btn toggle-btn">Logout</button>
+
+    <div class="balance">
+      <h3>Your Balance</h3>
+      <h1 id="balance">₹0.00</h1>
+    </div>
+
+    <div class="inc-exp-container">
+      <div>
+        <h4>Income</h4>
+        <p id="money-plus" class="money plus">+₹0.00</p>
+      </div>
+      <div>
+        <h4>Expense</h4>
+        <p id="money-minus" class="money minus">-₹0.00</p>
+      </div>
+    </div>
+
+    <h3>History</h3>
+    <ul id="list" class="list"></ul>
+    <button class="btn" onclick="toggleHistory()" id="history-toggle-btn">View Full History</button>
+
+
+    <h3>Add New Transaction</h3>
+    <form id="form">
+      <input type="text" id="text" placeholder="Enter description..." required>
+      <input type="number" id="amount" placeholder="Enter amount..." required>
+      <input type="date" id="date" required />
+   <button class="btn" onclick="toggleMonthlySummary()" id="monthly-summary-btn">📊 View Monthly Summary</button>
+<div id="monthly-summary" style="display: none;"></div>
+
+
+
+
+
+      <select id="category" required>
+        <option value="" disabled selected>Select category</option>
+        <option value="income">Income</option>
+        <option value="food">Food</option>
+        <option value="travel">Travel</option>
+        <option value="rent">Rent</option>
+        <option value="other">Other</option>
+      </select>
+      <button class="btn">Add Transaction</button>
+    </form>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+
